@@ -3,9 +3,7 @@
 
 //Dependencies:
 var express = require("express");
-var mongoose = require("mongoose");
-var request = require("request");
-var cheerio = require("cheerio");
+
 var bodyParser = require("body-parser");
 
 
@@ -36,9 +34,6 @@ db.once("open", function(){
   console.log("Mongoose connected and ready to rock.")
 });
 
-app.get("/", function(request, response){
-  response.send(index.html);
-});
 
 require("./app/routes/control.js")(app);
 
