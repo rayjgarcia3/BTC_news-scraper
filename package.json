@@ -1,0 +1,35 @@
+{
+  "name": "btc_news-scraper",
+  "version": "1.0.0",
+  "description": "Scrapes news reports from key Bitcoin news sources",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nojoso88/BTC_news-scraper.git"
+  },
+  "keywords": [
+    "mongoDB",
+    "BTC",
+    "bitcoin",
+    "node",
+    "express",
+    "mongoose"
+  ],
+  "author": "Noah Henry Johnson",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/nojoso88/BTC_news-scraper/issues"
+  },
+  "homepage": "https://github.com/nojoso88/BTC_news-scraper#readme",
+  "dependencies": {
+    "body-parser": "^1.16.1",
+    "cheerio": "^0.22.0",
+    "express": "^4.14.1",
+    "express-handlebars": "^3.0.0",
+    "mongoose": "^4.8.2",
+    "request": "^2.79.0"
+  }
+}
