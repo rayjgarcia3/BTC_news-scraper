@@ -3,8 +3,10 @@
 
 //Dependencies:
 var express = require("express");
-
+var mongoose = require("mongoose");
+var Promise = require("bluebird");
 var bodyParser = require("body-parser");
+var exphbs = require("express-handlebars");
 
 
 //Initialize Express
@@ -21,6 +23,10 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 app.use(express.static("public"));
+app.engine("handlebars", exphbs({ defaultLayout: "main"}));
+app.set("view engine", "handlebars");
+
+mongoose.Promise = Promise;
 
 //Database configuration for Mongoose
 /*  ==== PRODUCTION  ====

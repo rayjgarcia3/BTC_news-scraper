@@ -9,10 +9,6 @@ var ReportSchema = new Schema({
   link: {
     type: String,
     required: true
-  },
-  image: {
-    type: String,
-    required: false
   }
 });
 
