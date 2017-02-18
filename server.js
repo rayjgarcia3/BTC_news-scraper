@@ -7,6 +7,7 @@ var mongoose = require("mongoose");
 var Promise = require("bluebird");
 var bodyParser = require("body-parser");
 var exphbs = require("express-handlebars");
+var path = require("path");
 
 
 //Initialize Express
@@ -14,15 +15,15 @@ var app = express();
 var PORT = process.env.PORT || 8080;
 
 //Database configuration
-var databaseUrl = "scraper";
-var collections = ["scrapedData"];
-
+// var databaseUrl = "scraper";
+// var collections = ["scrapedData"];
+//
 
 //Middleware
 app.use(bodyParser.urlencoded({
   extended: false
 }));
-app.use(express.static("public"));
+app.use(express.static(__dirname + '/public'));
 app.engine("handlebars", exphbs({ defaultLayout: "main"}));
 app.set("view engine", "handlebars");
 

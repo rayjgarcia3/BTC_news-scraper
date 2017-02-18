@@ -1,0 +1,20 @@
+.main-content{
+  max-width: 800px;
+  width: 80%;
+  padding: 15px;
+  margin: 0 auto;
+  background: #efc;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+h1{
+  font-size: 1.5em;
+  font-weight: bold;
+}
+body{
+  background: green;
+}
+#news{
+  border: 1px #333 solid;
+  border-radius: 10px;
+  padding: 20px;
+}

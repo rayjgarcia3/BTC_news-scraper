@@ -5,7 +5,8 @@ var Report = require("../models/report")
 module.exports = function(app){
   //Initial app action - send the homepage
   app.get("/", function(request, response){
-    response.send(index.html);
+    var start = {}
+    response.render("index", start);
   });
   app.get("/scrape", function(req, response){
     request("http://www.coindesk.com/", function(error, response, html){
@@ -31,10 +32,14 @@ module.exports = function(app){
 });
   app.get("/news", function(req, response){
     Report.find({}, function(error, doc){
+      var hbsObject = {
+        reports : doc
+      };
       if (error){
         console.log(error);
       }else{
-        response.json(doc);
+        response.render("index", hbsObject);
+        console.log(doc);
       }
     });
   });
