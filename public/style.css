@@ -1,0 +1,11 @@
+.main-content{
+  max-width: 800px;
+  width: 80%;
+  margin: 0 auto,auto;
+  background: #efc
+}
+
+#news{
+  border: 1px #333 solid;
+  border-radius: 10px;
+}
