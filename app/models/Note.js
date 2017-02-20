@@ -4,14 +4,13 @@ var Schema = mongoose.Schema;
 var ReportSchema = new Schema({
   title: {
     type: String,
-    required: true
   },
-  link: {
+  body: {
     type: String,
     required: true
   }
 });
 
-var Report = mongoose.model("Report", ReportSchema);
+var Note = mongoose.model("Note", ReportSchema);
 
-module.exports = Report;
+module.exports = Note;

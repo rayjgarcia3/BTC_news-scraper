@@ -8,6 +8,9 @@ var Promise = require("bluebird");
 var bodyParser = require("body-parser");
 var exphbs = require("express-handlebars");
 var path = require("path");
+var methodOverride = require("method-override");
+
+
 mongoose.Promise = Promise;
 
 
@@ -16,6 +19,7 @@ var app = express();
 var PORT = process.env.PORT || 8080;
 
 //Middleware
+app.use(methodOverride("_method"));
 app.use(bodyParser.urlencoded({
   extended: false
 }));
@@ -38,6 +42,7 @@ db.once("open", function(){
 
 
 require("./app/routes/control.js")(app);
+
 
 app.listen(PORT, function(){
   console.log("App running on PORT: ", PORT);
