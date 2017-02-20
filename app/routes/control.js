@@ -46,7 +46,7 @@ module.exports = function(app){
       }
     }).limit(10);
   });
-  app.get("/news/comment/:id", function(req, response){
+  app.get("/news/note/:id", function(req, response){
     console.log()
     Report.findById(req.params.id, function(error, doc){
       var hbsObject = {
@@ -55,7 +55,7 @@ module.exports = function(app){
       if (error){
         console.log(error);
       }else{
-        response.render("comment", hbsObject);
+        response.render("note", hbsObject);
         console.log(doc);
       }
     }).limit(10);

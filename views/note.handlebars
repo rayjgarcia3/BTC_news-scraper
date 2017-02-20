@@ -1,0 +1,34 @@
+<div class="boombox">
+  <br><br>
+  <div class="row center">
+     <h1 class="white-text">{{reports.title}}</h1>
+  </div>
+</div>
+<div class="container">
+  <div class="section">
+    <div class="row">
+      <br><br>
+      <form class="col s12">
+        <div class="row">
+          <div class="col s10 push-s1">
+            <div class="input-field" id="send-note">
+              <input id="note" type="text">
+              <label for="note">Note</label>
+              <div class="row center">
+                <button type="submit" class="btn-flat btn-large blue darken-4 white-text"><i class="material-icons">send</i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<script src="/materialize/js/jquery-3.1.1.js"></script>
+<script src="/materialize/js/materialize.min.js"></script>
+<script>
+jQuery(document).ready(function() {
+ jQuery('select').material_select();
+ console.log("loaded");
+});
+</script>
