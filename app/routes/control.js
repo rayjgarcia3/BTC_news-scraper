@@ -46,16 +46,28 @@ module.exports = function(app){
       }
     }).limit(10);
   });
+  app.get("/news/comment/:id", function(req, response){
+    console.log()
+    Report.findById(req.params.id, function(error, doc){
+      var hbsObject = {
+        reports : doc
+      };
+      if (error){
+        console.log(error);
+      }else{
+        response.render("comment", hbsObject);
+        console.log(doc);
+      }
+    }).limit(10);
+  });
   app.post("/news/save", function(req, response){
     //I'm having trouble tryng to update the 'saved' boolean on click of the save button.
     //It's returing a refence error saying that 'saved' is not defined. It is defined in the model.
     //I don't understand the problem here.
     Report.findOneAndUpdate({"_id": req.body.id}, {"saved": !saved }, function(err, doc){
       if(err){
-        console.log(err);
         response.send(err)
       }else{
-        console.log(Report);
         console.log(doc);
       }
     })
