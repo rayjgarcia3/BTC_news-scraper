@@ -5,7 +5,7 @@
     background-size: cover;
     background-position: center center;
     margin: 0;
-    text-shadow: 7px 7px 12px #9ff;
+    text-shadow: 7px 7px 10px rgba(255, 255, 255, .25);
     font-size: 1.2em;
     font-weight: bold;
 }
