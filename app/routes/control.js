@@ -60,16 +60,38 @@ module.exports = function(app){
       }
     }).limit(10);
   });
-  app.post("/news/save", function(req, response){
-    //I'm having trouble tryng to update the 'saved' boolean on click of the save button.
-    //It's returing a refence error saying that 'saved' is not defined. It is defined in the model.
-    //I don't understand the problem here.
-    Report.findOneAndUpdate({"_id": req.body.id}, {"saved": !saved }, function(err, doc){
+  app.put("/news/save/:id", function(req, response){
+    Report.findOneAndUpdate({"_id": req.params.id}, {$set: {"saved": true}}, {new: true , upsert: true}, function(err, savedStory){
       if(err){
         response.send(err)
       }else{
-        console.log(doc);
+        response.sendStatus(204);
+        console.log(savedStory);
       }
     })
-  })
+  });
+  app.get("/news/saved", function (req, response){
+    Report.find({"saved": true})
+    .exec(function(error, doc){
+      if (error){
+        console.log(error);
+      }else{
+        var hbsObject = {
+          reports: doc
+        }
+        console.log(hbsObject);
+        response.render("saved", hbsObject);
+      }
+    });
+  });
+  app.put("/news/remove/:id", function(req, response){
+    Report.findOneAndUpdate({"_id": req.params.id}, {$set: {"saved": false}}, {new: true , upsert: true}, function(err, removedStory){
+      if(err){
+        response.send(err)
+      }else{
+        response.redirect("/news/saved");
+        console.log(removedStory);
+      }
+    })
+  });
 };

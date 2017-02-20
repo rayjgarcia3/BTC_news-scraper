@@ -11,20 +11,22 @@
   <title>BTC News Scraper</title>
 </head>
 <body>
-  <nav class="indigo darken-4 text-orange" role="navigation">
-   <div class="nav-wrapper container">
-     <a id="logo-container" href="/news" class="brand-logo">BTC News Scraper</a>
-     <ul class="right hide-on-med-and-down">
-       <li><a href="#">Saved Reports</a></li>
-       <li><a href="#">Notes</a></li>
-     </ul>
-     <ul id="nav-mobile" class="side-nav">
-       <li><a href="/saved-reports">Saved Reports</a></li>
-       <li><a href="/user-comments">Comments</a></li>
-     </ul>
-     <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-   </div>
- </nav>
+  <div class="navbar-fixed">
+    <nav class="indigo darken-4 text-orange" role="navigation">
+     <div class="nav-wrapper container">
+       <a id="logo-container" href="/news" class="brand-logo">BTC News Scraper</a>
+       <ul class="right hide-on-med-and-down">
+         <li><a href="/news/saved">Saved Reports</a></li>
+         <li><a href="#">Notes</a></li>
+       </ul>
+       <ul id="nav-mobile" class="side-nav">
+         <li><a href="/news/saved">Saved Reports</a></li>
+         <li><a href="/user-comments">Comments</a></li>
+       </ul>
+       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+     </div>
+   </nav>
+ </div>
     {{{body}}}
 </body>
 </html>

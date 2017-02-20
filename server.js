@@ -12,6 +12,7 @@ var methodOverride = require("method-override");
 
 
 mongoose.Promise = Promise;
+Promise.promisifyAll(mongoose);
 
 
 //Initialize Express
@@ -33,15 +34,16 @@ app.set("view engine", "handlebars");
 mongoose.connect("mongodb://heroku_61r5kd5m:c63jhjs6ndeh07q6igunp3fk0p@ds153689.mlab.com:53689/heroku_61r5kd5m
 ");
 ======  */
-mongoose.connect("mongodb://localhost/btc-news");
+mongoose.connect("mongodb://localhost/btcnews");
+mongoose.set("debug", true);
 var db = mongoose.connection;
 
 db.once("open", function(){
   console.log("Mongoose connected and ready to rock.")
+  require("./app/routes/control.js")(app);
 });
 
 
-require("./app/routes/control.js")(app);
 
 
 app.listen(PORT, function(){
