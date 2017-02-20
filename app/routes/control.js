@@ -42,6 +42,6 @@ module.exports = function(app){
         response.render("news", hbsObject);
         console.log(doc);
       }
-    });
+    }).limit(10);
   });
 };

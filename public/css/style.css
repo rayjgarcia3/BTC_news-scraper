@@ -1,10 +1,13 @@
 .boombox {
     background-image: url("../img/btcBackground.jpg");
     background-repeat: no-repeat;
-    height: 50vh;
+    height: 45vh;
     background-size: cover;
     background-position: center center;
     margin: 0;
+    text-shadow: 7px 7px 12px #9ff;
+    font-size: 1.2em;
+    font-weight: bold;
 }
 
 #news-btn{
@@ -13,4 +16,8 @@
   border: solid 2px white;
   font-weight: bolder;
   margin: auto;
+}
+
+#reports li{
+  margin: 10px 0px;
 }
