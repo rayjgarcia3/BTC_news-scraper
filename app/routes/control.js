@@ -2,14 +2,15 @@
 var request = require("request");
 var cheerio = require("cheerio");
 var Report = require("../models/report")
+
 module.exports = function(app){
   //Initial app action - send the homepage
-  app.get("/", function(request, response){
+  app.get("/", function(req, response){
     var start = {}
     response.render("index", start);
   });
   app.get("/scrape", function(req, response){
-    request("http://www.coindesk.com/", function(error, response, html){
+    request("http://www.coindesk.com/", function(error, res, html){
       var $ = cheerio.load(html);
       console.log($);
       $("div.post-info h3 a").each(function(i, element){
@@ -26,9 +27,9 @@ module.exports = function(app){
           console.log(doc);
         }
       });
-
     })
-  });
+  })
+  response.redirect("/news");
 });
   app.get("/news", function(req, response){
     Report.find({}, function(error, doc){
@@ -38,7 +39,7 @@ module.exports = function(app){
       if (error){
         console.log(error);
       }else{
-        response.render("index", hbsObject);
+        response.render("news", hbsObject);
         console.log(doc);
       }
     });

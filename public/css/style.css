@@ -1,20 +1,16 @@
-.main-content{
-  max-width: 800px;
-  width: 80%;
-  padding: 15px;
-  margin: 0 auto;
-  background: #efc;
-  font-family: "Trebuchet MS", Helvetica, sans-serif;
+.boombox {
+    background-image: url("../img/btcBackground.jpg");
+    background-repeat: no-repeat;
+    height: 50vh;
+    background-size: cover;
+    background-position: center center;
+    margin: 0;
 }
-h1{
-  font-size: 1.5em;
-  font-weight: bold;
-}
-body{
-  background: green;
-}
-#news{
-  border: 1px #333 solid;
-  border-radius: 10px;
-  padding: 20px;
+
+#news-btn{
+  background-color: rgba(0, 50, 200, .15);
+  color: white;
+  border: solid 2px white;
+  font-weight: bolder;
+  margin: auto;
 }

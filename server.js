@@ -8,16 +8,12 @@ var Promise = require("bluebird");
 var bodyParser = require("body-parser");
 var exphbs = require("express-handlebars");
 var path = require("path");
+mongoose.Promise = Promise;
 
 
 //Initialize Express
 var app = express();
 var PORT = process.env.PORT || 8080;
-
-//Database configuration
-// var databaseUrl = "scraper";
-// var collections = ["scrapedData"];
-//
 
 //Middleware
 app.use(bodyParser.urlencoded({
@@ -27,7 +23,6 @@ app.use(express.static(__dirname + '/public'));
 app.engine("handlebars", exphbs({ defaultLayout: "main"}));
 app.set("view engine", "handlebars");
 
-mongoose.Promise = Promise;
 
 //Database configuration for Mongoose
 /*  ==== PRODUCTION  ====
