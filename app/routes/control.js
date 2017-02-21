@@ -11,6 +11,7 @@ module.exports = function(app){
     var start = {}
     response.render("index", start);
   });
+  //Initiate scraping to grab stories from coindesk.com
   app.get("/scrape", function(req, response){
     request("http://www.coindesk.com/", function(error, res, html){
       var $ = cheerio.load(html);
@@ -34,7 +35,7 @@ module.exports = function(app){
   response.redirect("/news");
 });
   app.get("/news", function(req, response){
-    Report.find({}, function(error, doc){
+    Report.find({"saved": false}).limit(10).exec(function(error, doc){
       var hbsObject = {
         reports : doc
       };
@@ -44,28 +45,14 @@ module.exports = function(app){
         response.render("news", hbsObject);
         console.log(doc);
       }
-    }).limit(10);
-  });
-  app.get("/news/note/:id", function(req, response){
-    console.log()
-    Report.findById(req.params.id, function(error, doc){
-      var hbsObject = {
-        reports : doc
-      };
-      if (error){
-        console.log(error);
-      }else{
-        response.render("note", hbsObject);
-        console.log(doc);
-      }
-    }).limit(10);
+    });
   });
   app.put("/news/save/:id", function(req, response){
-    Report.findOneAndUpdate({"_id": req.params.id}, {$set: {"saved": true}}, {new: true , upsert: true}, function(err, savedStory){
+    Report.findOneAndUpdate({"_id": req.params.id}, {$set: {"saved": true}}, /*{new: true , upsert: true},*/ function(err, savedStory){
       if(err){
         response.send(err)
       }else{
-        response.sendStatus(204);
+        response.redirect("/news");
         console.log(savedStory);
       }
     })

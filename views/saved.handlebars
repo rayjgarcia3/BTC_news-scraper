@@ -12,19 +12,31 @@
         <ul id="reports" class="collection">
           {{#each reports}}
             <div class="collection-item row">
-              <div class="col s2">
-                <br>
-                <form method="POST" action="/news/remove/{{this.id}}?_method=PUT">
-                  <button class="btn-floating btn-small waves-effect waves-light red" title="Remove" value="{{this}}" type="submit"><i class="material-icons">do_not_disturb_on</i></button>
-                </form>
-              </div>
-              <div class="col s8">
-                <li>{{this.title}}<br /><a href="{{this.link}}">Read more</a></li>
+              <div class="col s12">
+                <div class="row">
+                  <div class="col s1">
+                    <br>
+                    <form method="POST" action="/news/remove/{{this.id}}?_method=PUT">
+                      <button class="btn-floating btn-small waves-effect waves-light red" title="Remove" value="{{this}}" type="submit"><i class="material-icons">do_not_disturb_on</i></button>
+                    </form>
+                  </div>
+                  <div class="col s8">
+                    <li>{{this.title}}<br /><a href="{{this.link}}">Read more</a></li>
+                  </div>
+                  <div class="col s1 pull-s1">
+                      <a href=/news/note/{{this.id}} class="btn-flat blue darken-4 white-text">+Note</a>
+                  </div>
+                </div>
+                <div class="row center">
+                  <div class="col s10">
+                    <p><strong>Note: </strong>Will go here</p>
+                  </div>
+                </div>
               </div>
             </div>
           {{/each}}
         </ul>
-      </div>
-    </div>
   </div>
+  </div>
+</div>
 </div>
