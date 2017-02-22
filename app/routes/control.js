@@ -77,6 +77,7 @@ module.exports = function(app){
   app.get("/news/note/:id", function (req, response){
     console.log("here!")
     Report.findById(req.params.id)
+    .populate("notes")
     .exec(function(error, doc){
       if (error){
         console.log(error);

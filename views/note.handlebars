@@ -13,10 +13,10 @@
           <div class="col s10 push-s1">
               <div class="input-field" id="send-note">
                 <input name="title" type="text" value="{{reports.title}}" style="display: none;">
-                <input name="body" type="text">
+                <input name="body" type="text" autocomplete="off">
                 <label for="body">Note</label>
                 <div class="row center">
-                  <input type="submit" class="btn-flat btn-large blue darken-4 white-text"><i class="material-icons">send</i></input>
+                  <button type="submit" class="btn-flat btn-large blue darken-4 white-text"><i class="material-icons">send</i></button>
                 </div>
               </div>
           </div>
@@ -27,16 +27,16 @@
   <div class="section">
     <div class="row">
       <ul id="notes" class="collection">
-        {{#each note}}
+        {{#each reports.notes}}
           <div class="collection-item row">
             <div class="col s2">
               <br>
-              <form method="POST" action="/news/note/delete/{{this.id}}?_method=PUT">
-                <button class="btn-floating btn-small waves-effect waves-light orange darken-4" title="Save Report" type="submit"><i class="material-icons">do_not_disturb_on</i></button>
+              <form method="POST" action="/news/note/delete/{{reports.notes.id}}?_method=PUT">
+                <button class="btn-floating btn-small waves-effect waves-light orange darken-4" title="Delete Note" type="submit"><i class="material-icons">do_not_disturb_on</i></button>
               </form>
             </div>
             <div class="col s8">
-              <li>{{this.title}}<br /><a href="{{this.link}}">Read more</a></li>
+              <li><strong>{{this.body}}</strong><br /><a href="{{this.link}}">Read article</a></li>
             </div>
           </div>
         {{/each}}
