@@ -4,6 +4,7 @@ var Schema = mongoose.Schema;
 var ReportSchema = new Schema({
   title: {
     type: String,
+    unique: true,
     required: true
   },
   link: {
@@ -14,10 +15,10 @@ var ReportSchema = new Schema({
     type: Boolean,
     default: false
   },
-  note: {
-    type: Schema.Types.ObjectId,
-    ref: "Note"
-  }
+  notes:
+    [{type: Schema.Types.ObjectId,
+    ref: "Note"}]
+
 });
 
 var Report = mongoose.model("Report", ReportSchema);

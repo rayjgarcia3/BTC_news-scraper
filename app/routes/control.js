@@ -30,6 +30,9 @@ module.exports = function(app){
           console.log(doc);
         }
       });
+      if (result.length===10){
+        return false;
+      }
     })
   })
   response.redirect("/news");
@@ -71,6 +74,21 @@ module.exports = function(app){
       }
     });
   });
+  app.get("/news/note/:id", function (req, response){
+    console.log("here!")
+    Report.findById(req.params.id)
+    .exec(function(error, doc){
+      if (error){
+        console.log(error);
+      }else{
+        var hbsObject = {
+          reports: doc
+        }
+        response.render("note", hbsObject);
+        console.log(hbsObject);
+      }
+    });
+  });
   app.put("/news/remove/:id", function(req, response){
     Report.findOneAndUpdate({"_id": req.params.id}, {$set: {"saved": false}}, {new: true , upsert: true}, function(err, removedStory){
       if(err){
@@ -81,4 +99,21 @@ module.exports = function(app){
       }
     })
   });
+  app.post("/submit/:id", function(req, response){
+    var newNote = new Note(req.body);
+    newNote.save(function(err, doc){
+      if (err){
+        console.log(err);
+       }else{
+        Report.findOneAndUpdate({"_id": req.params.id}, {$push: {"notes": newNote.id}}, {new: true}).exec()
+        .then(function(err, doc){
+          if (err){
+            response.send(err);
+          }else{
+            response.redirect("/news/note/"+req.params.id );
+          }
+        });
+      }
+    })
+  })
 };

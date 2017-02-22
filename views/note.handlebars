@@ -8,20 +8,41 @@
   <div class="section">
     <div class="row">
       <br><br>
-      <form class="col s12">
+      <form class="col s12" action="/submit/{{reports._id}}"  method="POST">
         <div class="row">
           <div class="col s10 push-s1">
-            <div class="input-field" id="send-note">
-              <input id="note" type="text">
-              <label for="note">Note</label>
-              <div class="row center">
-                <button type="submit" class="btn-flat btn-large blue darken-4 white-text"><i class="material-icons">send</i></button>
+              <div class="input-field" id="send-note">
+                <input name="title" type="text" value="{{reports.title}}" style="display: none;">
+                <input name="body" type="text">
+                <label for="body">Note</label>
+                <div class="row center">
+                  <input type="submit" class="btn-flat btn-large blue darken-4 white-text"><i class="material-icons">send</i></input>
+                </div>
               </div>
-            </div>
           </div>
         </div>
       </form>
     </div>
+  </div>
+  <div class="section">
+    <div class="row">
+      <ul id="notes" class="collection">
+        {{#each note}}
+          <div class="collection-item row">
+            <div class="col s2">
+              <br>
+              <form method="POST" action="/news/note/delete/{{this.id}}?_method=PUT">
+                <button class="btn-floating btn-small waves-effect waves-light orange darken-4" title="Save Report" type="submit"><i class="material-icons">do_not_disturb_on</i></button>
+              </form>
+            </div>
+            <div class="col s8">
+              <li>{{this.title}}<br /><a href="{{this.link}}">Read more</a></li>
+            </div>
+          </div>
+        {{/each}}
+      </ul>
+    </div>
+
   </div>
 </div>
 <script src="/materialize/js/jquery-3.1.1.js"></script>
