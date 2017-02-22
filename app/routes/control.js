@@ -105,13 +105,14 @@ module.exports = function(app){
       if (err){
         console.log(err);
        }else{
-        Report.findOneAndUpdate({"_id": req.params.id}, {$push: {"notes": newNote.id}}, {new: true}).exec()
-        .then(function(err, doc){
-          if (err){
-            response.send(err);
-          }else{
-            response.redirect("/news/note/"+req.params.id );
-          }
+        Report.findOneAndUpdate({"_id": req.params.id}, {$push: {"notes": newNote.id}}, {new: true},
+          function(err, newNote){
+            if (err){
+              console.log(err);
+            }else{
+              console.log("redirect");
+              response.redirect("/news/note/"+req.params.id );
+            }
         });
       }
     })
