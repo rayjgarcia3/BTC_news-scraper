@@ -8,6 +8,11 @@
     text-shadow: 7px 7px 10px rgba(255, 255, 255, .25);
     font-size: 1.2em;
     font-weight: bold;
+    color: white;
+}
+
+#btcPrice{
+  color: green;
 }
 
 #news-btn{

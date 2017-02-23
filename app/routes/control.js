@@ -15,7 +15,6 @@ module.exports = function(app){
   app.get("/scrape", function(req, response){
     request("http://www.coindesk.com/", function(error, res, html){
       var $ = cheerio.load(html);
-      console.log($);
       $("div.post-info h3 a").each(function(i, element){
         var result = {};
         result.title = $(this).attr("title");
@@ -39,15 +38,21 @@ module.exports = function(app){
 });
   app.get("/news", function(req, response){
     Report.find({"saved": false}).limit(10).exec(function(error, doc){
+      var priceNow;
+      request("http://www.coindesk.com/", function(error, res, html){
+        var $ = cheerio.load(html);
+        priceNow = $("div.bpiUSD").text();
       var hbsObject = {
-        reports : doc
+        reports : doc,
+        price: priceNow
       };
       if (error){
         console.log(error);
       }else{
         response.render("news", hbsObject);
-        console.log(doc);
+        console.log("HEY HEY HEY: ", hbsObject);
       }
+    });
     });
   });
   app.put("/news/save/:id", function(req, response){
