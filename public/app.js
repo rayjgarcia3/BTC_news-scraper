@@ -9,12 +9,15 @@
      });
 
      $(window).scroll(function(){
-       if ( $(window).scrollTop() >= 250){
-         $("#price-card").css({"position": "fixed", "right": "20%", "top": 80, "width": "auto"});
-         $("iframe").css("width", auto);
+       if($(window).width() >=800){
+       if ( $(window).scrollTop() >= 320){
+         $("#price-card").css({"position": "fixed", "right": "10%", "top": 100, "width": "auto"});
+         $("#price-img").css("width", "270px");
        }else{
           $("#price-card").css("position", "static");
+          $("#price-img").css("width", "270px");
        }
+      }
      })
 
   }); // end of document ready
