@@ -100,6 +100,19 @@ module.exports = function(app){
       }
     })
   });
+  app.put("/news/note/delete/:title/:id", function(req, response){
+    Note.findByIdAndRemove(req.params.id)
+    .exec()
+    .then(function(){
+      Report.findOne({title: req.params.title}, function (err, doc){
+        if (err){
+          console.log(err)
+        }else{
+          response.redirect("/news/note/"+doc.id);
+        }
+      });
+      });
+    });
   app.post("/submit/:id", function(req, response){
     var newNote = new Note(req.body);
     newNote.save(function(err, doc){

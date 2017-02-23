@@ -31,7 +31,7 @@
           <div class="collection-item row">
             <div class="col s2">
               <br>
-              <form method="POST" action="/news/note/delete/{{reports.notes.id}}?_method=PUT">
+              <form method="POST" action="/news/note/delete/{{this.title}}/{{this.id}}?_method=PUT">
                 <button class="btn-floating btn-small waves-effect waves-light orange darken-4" title="Delete Note" type="submit"><i class="material-icons">do_not_disturb_on</i></button>
               </form>
             </div>
@@ -52,4 +52,15 @@ jQuery(document).ready(function() {
  jQuery('select').material_select();
  console.log("loaded");
 });
+$('.dropdown-button').dropdown({
+ inDuration: 300,
+ outDuration: 225,
+ constrainWidth: false, // Does not change width of dropdown to that of the activator
+ hover: false, // Activate on hover
+ gutter: 0, // Spacing from edge
+ belowOrigin: false, // Displays dropdown below the button
+ alignment: 'left', // Displays dropdown with edge aligned to the left of button
+ stopPropagation: false // Stops event propagation
+}
+);
 </script>
