@@ -1,6 +1,12 @@
 <div class="boombox">
   <div class="row center">
      <br><br>
-     <a href="/scrape" id="news-btn" class="btn-flat">Get News</a>
+     <a href="/scrape" id="news-btn" class="btn-flat" onclick="$('#loading').show();">Get News</a>
+  </div>
+</div>
+<div class="container">
+  <div class="row center" id="loading">
+    <p><em>Loading...</em></p>
+    <img src="/img/giphy-loader.gif" height="175px">
   </div>
 </div>

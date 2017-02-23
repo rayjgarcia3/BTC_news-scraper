@@ -32,9 +32,10 @@ module.exports = function(app){
       if (result.length===10){
         return false;
       }
+
     })
+    response.redirect("/news");
   })
-  response.redirect("/news");
 });
   app.get("/news", function(req, response){
     Report.find({"saved": false}).limit(10).exec(function(error, doc){
@@ -50,7 +51,6 @@ module.exports = function(app){
         console.log(error);
       }else{
         response.render("news", hbsObject);
-        console.log("HEY HEY HEY: ", hbsObject);
       }
     });
     });

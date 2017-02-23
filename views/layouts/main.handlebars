@@ -11,7 +11,7 @@
   <title>BTC News Scraper</title>
 </head>
 <body>
-  <div class="navbar">
+  <div class="navbar" id="topnav">
     <nav class="indigo darken-4 text-orange" role="navigation">
      <div class="nav-wrapper container">
        <a id="logo-container" href="/news" class="brand-logo">BTC News Scraper</a>
@@ -28,11 +28,8 @@
    </nav>
  </div>
     {{{body}}}
+    <script src="/materialize/js/jquery-3.1.1.js"></script>
+    <script src="/materialize/js/materialize.min.js"></script>
+    <script src="/app.js"></script>
 </body>
-<script src="/materialize/js/jquery-3.1.1.js"></script>
-<script src="/materialize/js/materialize.min.js"></script>
-<script>
-$(".button-collapse").sideNav();
-$('.collapsible').collapsible();
-</script>
 </html>

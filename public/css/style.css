@@ -9,10 +9,19 @@
     font-size: 1.2em;
     font-weight: bold;
     color: white;
+    margin-top: 64px;
+}
+
+#topnav{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
 }
 
 #btcPrice{
   color: green;
+  font-weight: bold;
 }
 
 #news-btn{
@@ -25,6 +34,10 @@
 
 #reports li{
   margin: 10px 0px;
+}
+
+#highlight:hover{
+  background-color: rgba(50, 200, 125, .20);
 }
 
 /* label color */
