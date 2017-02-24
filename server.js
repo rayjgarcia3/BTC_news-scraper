@@ -30,11 +30,10 @@ app.set("view engine", "handlebars");
 
 
 //Database configuration for Mongoose
-/*  ==== PRODUCTION  ====
+/*  ==== PRODUCTION  ==== */
 mongoose.connect("mongodb://heroku_61r5kd5m:c63jhjs6ndeh07q6igunp3fk0p@ds153689.mlab.com:53689/heroku_61r5kd5m
 ");
-======  */
-mongoose.connect("mongodb://localhost/btcnews");
+//mongoose.connect("mongodb://localhost/btcnews");
 mongoose.set("debug", true);
 var db = mongoose.connection;
 
